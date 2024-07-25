@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Dataset</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0a072b; /* Dark blue background */
+            color: #fff; /* White text */
+        }
+
+        .container {
+            background-color: #0a072b;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #fff; /* White text */
+            font-size: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px 0;
+        }
+
+        input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-input-text {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #fff;
+            background-color: #0a072b; /* Dark blue background */
+            color: #fff; /* White text */
+            text-align: center;
+            margin-top: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        button {
+            background-color: #0a072b; /* Dark blue background */
+            color: #fff; /* White text */
+            border: 1px solid #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #edeef5; /* Light background on hover */
+            color: #0a072b; /* Dark blue text on hover */
+        }
+
+        .back-button {
+            margin-top: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            color: #fff; /* White text */
+            background-color: #0a072b; /* Dark blue background */
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: 1px solid #fff;
+            font-size: 16px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #edeef5; /* Light background on hover */
+            color: #0a072b; /* Dark blue text on hover */
+            border-color: #0a072b; /* Dark blue border on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Dataset</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="file-input-wrapper">
+                <input type="file" name="file" accept=".csv" onchange="document.getElementById('file-input-text').innerText = this.files[0] ? this.files[0].name : 'No file chosen'">
+                <div id="file-input-text" class="file-input-text">No file chosen</div>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+        <div class="back-button">
+            <a href="{{ url_for('home') }}">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

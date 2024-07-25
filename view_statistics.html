@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a072b; /* Solid dark blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #0a072b; /* Dark blue text */
+            font-size: 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0a072b; /* Dark blue for table header */
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #0a072b; /* Blue background */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #00274d; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Statistics</h1>
+        {% if stats %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Statistics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for column, stat in stats.items() %}
+                        <tr>
+                            <td>{{ column }}</td>
+                            <td>
+                                {% if stat.count %}
+                                    <strong>Count:</strong> {{ stat.count }}<br>
+                                {% endif %}
+                                {% if stat.unique %}
+                                    <strong>Unique:</strong> {{ stat.unique }}<br>
+                                {% endif %}
+                                {% if stat.top %}
+                                    <strong>Top:</strong> {{ stat.top }} (Frequency: {{ stat.freq }})<br>
+                                {% endif %}
+                                {% if stat.mean %}
+                                    <strong>Mean:</strong> {{ stat.mean }}<br>
+                                {% endif %}
+                                {% if stat.std %}
+                                    <strong>Std Dev:</strong> {{ stat.std }}<br>
+                                {% endif %}
+                                {% if stat.min %}
+                                    <strong>Min:</strong> {{ stat.min }}<br>
+                                {% endif %}
+                                {% if stat['25%'] %}
+                                    <strong>25th Percentile:</strong> {{ stat['25%'] }}<br>
+                                {% endif %}
+                                {% if stat['50%'] %}
+                                    <strong>50th Percentile (Median):</strong> {{ stat['50%'] }}<br>
+                                {% endif %}
+                                {% if stat['75%'] %}
+                                    <strong>75th Percentile:</strong> {{ stat['75%'] }}<br>
+                                {% endif %}
+                                {% if stat.max %}
+                                    <strong>Max:</strong> {{ stat.max }}<br>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No statistics available.</p>
+        {% endif %}
+        <a href="{{ url_for('home') }}" class="back-button">Back to Dashboard</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Using Social Media</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.dribbble.com/users/124059/screenshots/1873362/attachments/328342/charts.gif') center center / cover no-repeat;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .container {
+            background-color: rgba(8, 6, 38, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: appear 1.5s ease-out forwards;
+        }
+
+        @keyframes appear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 32px;
+        }
+
+        .about {
+            margin-bottom: 40px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #ffffff;
+            text-align: justify;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            position: relative;
+        }
+
+        .queries {
+            background-color: #0a072b;
+        }
+
+        .queries:hover {
+            background-color: #020012;
+        }
+
+        .user {
+            background-color: #0a072b;
+        }
+
+        .user:hover {
+            background-color: #020012;
+        }
+
+        .info-button {
+            background-color: #0a072b;
+        }
+
+        .info-button:hover {
+            background-color: #020012;
+        }
+
+        .info-box {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            width: 250px;
+            max-height: 200px; /* Set maximum height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            text-align: left;
+            font-size: 14px;
+            z-index: 2;
+            white-space: pre-wrap;
+        }
+
+        .button:hover .info-box {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="overlay"></div>
+    <div class="container" id="content-container">
+        <h1>Sentiment Analysis Using Social Media</h1>
+        <div class="about">
+            <p>Social media sentiment analysis involves analyzing user-generated content on platforms like Twitter, Facebook, and Instagram to understand public opinion and sentiments about various topics. By using natural language processing (NLP) techniques, businesses and organizations can gain insights into customer feelings, preferences, and opinions. This information can be crucial for improving products, services, and overall customer experience.</p>
+        </div>
+        <div class="buttons">
+            <div class="button info-button">What
+                <div class="info-box">
+                    <p>This product is a comprehensive data visualization solution designed for analyzing social media sentiment. Key features include dataset upload, statistics view, customizable visualizations, and interactivity.</p>
+                </div>
+            </div>
+            <div class="button info-button">Why
+                <div class="info-box">
+                    <p>Understanding and analyzing sentiments on social media is crucial for businesses to gauge customer opinions, policymakers to understand public sentiment, and researchers to study trends. Effective data visualization simplifies interpretation, identifies trends, and communicates insights.</p>
+                </div>
+            </div>
+            <div class="button info-button">How
+                <div class="info-box">
+                    <p>In real life, this tool is invaluable for companies in several ways:</p>
+                    <ul>
+                        <li><strong>Brand Monitoring:</strong> Companies can track and analyze public sentiment about their brand, allowing them to address issues promptly and manage their reputation.</li>
+                        <li><strong>Customer Feedback:</strong> By analyzing sentiments in customer reviews and feedback, businesses can identify common pain points and improve their products and services.</li>
+                        <li><strong>Market Trends:</strong> Helps in understanding market trends and consumer preferences, aiding in strategic decision-making and product development.</li>
+                        <li><strong>Campaign Effectiveness:</strong> Evaluates the impact of marketing campaigns and promotions by analyzing changes in sentiment over time.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <a href="/queries" class="button queries">Queries</a>
+            <a href="/user" class="button user">User</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Action</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #03062b; /* Dark blue to light blue gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #01031a; /* Dark grey background */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ecf0f1; /* Light grey text */
+            font-size: 28px;
+        }
+
+            .button {
+    	display: block;
+    	margin: 15px auto; /* Center buttons horizontally */
+    	padding: 15px;
+    	width: 100%;
+    	max-width: 300px;
+    	border: 2px solid #ffffff; /* White border */
+    	border-radius: 6px;
+    	background-color: #01031a; /* Dark background */
+    	color: #fff; /* White text */
+    	cursor: pointer;
+    	text-align: center;
+    	text-decoration: none;
+    	font-size: 18px;
+    	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+        .button:hover {
+            background-color: #03062b; /* Darker teal on hover */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What Would You Like to Do?</h1>
+        <a href="{{ url_for('view_statistics', filename=filename) }}" class="button">View Statistics</a>
+        <a href="{{ url_for('visualize', filename=filename) }}" class="button">Generate Visualizations</a>
+    </div>
+</body>
+</html>
